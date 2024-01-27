@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public GameObject panelEndGame, PanelWinGame;
+    public GameObject effectPartical;
     public float moveSpeed = 5f;
     int coinInLevel = 5;
     int coin = 0;
@@ -19,8 +20,10 @@ public class Player : MonoBehaviour
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
-
+        Instantiate(effectPartical, gameObject.transform);
+       
     }
+ 
 
     public void Jump()
     {
@@ -82,7 +85,15 @@ public class Player : MonoBehaviour
         PanelWinGame.SetActive(true);
         Time.timeScale = 0;
         txtCoin.enabled = false;
-        
+       
+    }
+    public void LoadNextLevel()
+    {
+        // Lấy index của màn chơi hiện tại
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        // Chuyển đến màn chơi tiếp theo (cộng thêm 1 vào index)
+        SceneManager.LoadScene(currentSceneIndex + 1);
     }
     // Update is called once per frame
     void Update()
