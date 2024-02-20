@@ -7,7 +7,8 @@ TagManager:
   - ground
   - obstacles
   - PanelEndGame
-  - coin
+  - fruits
+  - Weapon
   layers:
   - Default
   - TransparentFX
